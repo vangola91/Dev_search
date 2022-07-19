@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>DevSearch</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{% static "styles/main.css" %}'>
+<!--    <script src='main.js'></script> &ndash;&gt;-->
+<!--      <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />-->
+
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
+    <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
+        <style>
+            body{
+                background-color: rgb(82, 78, 78);
+                color: #fff;
+            }
+        </style>
+
+</head>
+<body>
+    
+    {% include 'navbar.html' %}
+
+    {% block content%}
+
+    {% endblock content %}
+
+</body>
+</html>
