@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="">
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>DevSearch</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/main.css' %}"/>
-<!--    <script src='main.js'></script> &ndash;&gt;-->
-<!--      <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />-->
+<html>
 
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- Icon - IconMonster -->
     <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
-    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
+    <!-- Mumble UI -->
     <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
-        <style>
-            body{
-                background-color: rgb(82, 78, 78);
-                color: #fff;
-            }
-        </style>
+    <!-- Dev Search UI -->
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
+
+    <title>DevSearch - Connect with Developers!</title>
 
 </head>
+
 <body>
-    
     {% include 'navbar.html' %}
 
-{#    {% if messages %}#}
-{#<ul class="messages">#}
-{#    {% for message in messages %}#}
-{#    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
-{#    {% endfor %}#}
-{#</ul>#}
-{#{% endif %}#}
+
+    <!-- {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %} -->
 
     {% if messages %}
+
     {% for message in messages %}
-    <div class="alert alert--{{ message.tags }}">
-        <p class="alert__message">{{ message }}</p>
+    <div class="alert  alert--{{message.tags}}">
+        <p class="alert__message">{{message}}</p>
         <button class="alert__close">x</button>
     </div>
 
@@ -45,10 +45,11 @@
     {% endif %}
 
 
-    {% block content%}
+    {% block content %}
 
     {% endblock content %}
-
 </body>
-<script> src="{% static 'uikit/app.js' %}"</script>
+<script src="{% static 'uikit/app.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
 </html>
