@@ -1,12 +1,16 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Project
+from .utils import searchProjects
+
+from .models import Project, Tag
 from .forms import ProjectForm
 
 
 def projects(request):
-    projects = Project.objects.all()
-    context = {'projects': projects}
+
+    projects, search_query =  searchProjects(request)
+
+    context = {'projects': projects, 'search_query': search_query}
     return render(request, 'projects/projects.html', context)
 
 
@@ -14,6 +18,7 @@ def project(request, pk):
     projectObj = Project.objects.get(id=pk)
     context = {'project': projectObj}
     return render(request, 'projects/single-project.html', context)
+
 
 @login_required(login_url="login")
 def createProject(request):
@@ -28,19 +33,20 @@ def createProject(request):
             project.save()
             return redirect('account')
 
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'projects/project-form.html', context)
+
 
 def updateProject(request, pk):
     profile = request.user.profile
     project = profile.project_set.get(id=pk)
     form = ProjectForm(instance=project)
-    if  request.method == 'POST':
+    if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
             return redirect('account')
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'projects/project-form.html', context)
 
 
@@ -53,4 +59,4 @@ def deleteProject(request, pk):
         project.delete()
         return redirect('projects')
     context = {'object': project}
-    return render(request, 'delete.html',context)
+    return render(request, 'delete.html', context)
