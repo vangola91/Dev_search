@@ -3,9 +3,9 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.db.models import Q
+
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
-from .models import Profile, Message
+from .models import Profile
 from .utils import searchProfiles, paginateProfiles
 
 
@@ -68,7 +68,7 @@ def registerUser(request):
 def profiles(request):
     profiles, search_query = searchProfiles(request)
 
-    custom_range, profiles = paginateProfiles(request, profiles, 1)
+    custom_range, profiles = paginateProfiles(request, profiles, 3)
 
     context = {'profiles': profiles, 'search_query': search_query,
                'custom_range': custom_range}
@@ -179,6 +179,7 @@ def viewMessage(request, pk):
     context = {'message': message}
     return render(request, 'users/message.html', context)
 
+
 def createMessage(request, pk):
     recipient = Profile.objects.get(id=pk)
     form = MessageForm()
@@ -202,7 +203,6 @@ def createMessage(request, pk):
 
             messages.success(request, 'Your message was successfully sent!')
             return redirect('user-profile', pk=recipient.id)
-
 
     context = {'recipient': recipient, 'form': form}
     return render(request, 'users/message_form.html', context)
