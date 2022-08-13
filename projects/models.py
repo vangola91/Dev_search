@@ -3,6 +3,8 @@ import uuid
 
 from django.db.models.deletion import CASCADE
 from users.models import Profile
+
+
 # Create your models here.
 
 
@@ -30,8 +32,10 @@ class Project(models.Model):
 
     @property
     def imageURL(self):
+
         try:
             url = self.featured_image.url
+
         except:
             url = ''
         return url
