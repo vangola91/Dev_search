@@ -27,7 +27,7 @@ def getProjects(request):
     print('USER:', request.user)
     projects = Project.objects.all()
     seriailizer = ProjectSerializer(projects, many=True)
-    return Response(seriailizer.data)\
+    return Response(seriailizer.data)
 
 
 @api_view(['GET'])
@@ -40,11 +40,11 @@ def getProject(request, pk):
 @permission_classes([IsAuthenticated])
 def projectVote(request, pk):
     project = Project.objects.get(id=pk)
-    users = request.user.profile
+    user = request.user.profile
     data = request.data
 
     review, created = Review.objects.get_or_create(
-        owner=users,
+        owner=user,
         project=project,
 
     )
