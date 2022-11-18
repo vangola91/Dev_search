@@ -5,14 +5,17 @@ django-email-users==1.1.0
 django-filter==22.1
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.2.0
+gunicorn==20.1.0
 mock==4.0.3
 Pillow==9.2.0
 projects==1.0.9
+psycopg2==2.9.5
 PyJWT==2.4.0
 pytz==2022.1
 PyYAML==6.0
 signals==0.0.2
 sqlparse==0.4.2
 termcolor==1.1.0
+typing_extensions==4.4.0
 urwid==2.1.2
 whitenoise==6.2.0
