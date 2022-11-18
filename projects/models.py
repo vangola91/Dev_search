@@ -10,7 +10,7 @@ from users.models import Profile
 
 class Project(models.Model):
     owner = models.ForeignKey(
-        Profile, null=True, blank=True, on_delete=models.CASCADE)
+        Profile, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     featured_image = models.ImageField(
@@ -32,7 +32,6 @@ class Project(models.Model):
 
     @property
     def imageURL(self):
-
         try:
             url = self.featured_image.url
 

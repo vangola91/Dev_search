@@ -147,10 +147,20 @@ WSGI_APPLICATION = 'devsearchlive.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'devsearch',
+        'USER':'postgres',
+        'PASSWORD':'1',
+        'HOST':'localhost',
+        'PORT':'5432',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -189,7 +199,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'vangola91@gmail.com'
-EMAIL_HOST_PASSWORD = 'phpbdslpuzjviead'
+EMAIL_HOST_PASSWORD = 'dqtvbiaqmncvktnr'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
